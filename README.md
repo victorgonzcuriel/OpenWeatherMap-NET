@@ -1,2 +1,2 @@
 # OpenWeatherMap-NET
-NET 6 library to access OpenWeatherMap API
+.NET library to access OpenWeatherMap API
