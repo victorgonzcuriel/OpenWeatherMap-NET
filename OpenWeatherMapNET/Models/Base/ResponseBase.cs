@@ -2,6 +2,10 @@
 
 namespace OpenWeatherMapNET.Models.Base
 {
+    /// <summary>
+    /// Base class for response models
+    /// </summary>
+    /// <typeparam name="T"></typeparam>
     public class ResponseBase<T> where T : IResponse
     {
         public readonly bool IsSuccessStatusCode;

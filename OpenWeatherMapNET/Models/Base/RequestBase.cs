@@ -1,4 +1,4 @@
-﻿using OpenWeatherMapNET.Settings;
+﻿using OpenWeatherMapNET.Attributes;
 using System.Web;
 
 namespace OpenWeatherMapNET.Models
@@ -6,7 +6,7 @@ namespace OpenWeatherMapNET.Models
     /// <summary>
     /// Base model for HttpRequests
     /// </summary>
-    internal class RequestBase
+    public abstract class RequestBase
     {
         /// <summary>
         /// API key
@@ -17,11 +17,36 @@ namespace OpenWeatherMapNET.Models
         /// Get a query string with the object information
         /// </summary>
         /// <returns></returns>
-        public string ToQueryString() => "?" + string.Join("&",
-            this.GetType()
+        public string ToQueryString()
+        {
+            var propsString = string.Empty;
+
+            var props = this.GetType()
                 .GetProperties()
-                .Where(x => x.GetType() != typeof(string) && x.GetValue(this) != null && x.GetValue(this)!.ToString() != string.Empty)
-                .Select(x => $"{x.Name}={HttpUtility.UrlEncode(x.GetValue(this)!.ToString())}")
-                .ToArray());
+                .Where(x => x.GetValue(this) != null && !string.IsNullOrEmpty(x.GetValue(this)!.ToString()));
+
+            foreach (var prop in props)
+            {
+                var attributes = prop.GetCustomAttributes(true);
+
+                var propName = prop.Name;
+
+                foreach(var attr in attributes)
+                {
+                    var nameAttr = attr as QueryNameAttribute;
+
+                    // if there is a querynameattribute the name is overriden
+                    if (nameAttr != null)
+                    {
+                        propName = nameAttr.Name;
+                        break;
+                    }
+                }
+
+                propsString = String.Join("&", $"{propName}={HttpUtility.UrlEncode(prop.GetValue(this)!.ToString())}");
+            }
+
+            return $"?{propsString}";
+        }
     }
 }

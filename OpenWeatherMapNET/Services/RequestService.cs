@@ -1,14 +1,12 @@
 ﻿using OpenWeatherMapNET.Models;
 using OpenWeatherMapNET.Models.Base;
 using OpenWeatherMapNET.Settings;
-using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
 
-namespace OpenWeatherMapNET.Services.Interfaces
+namespace OpenWeatherMapNET.Services
 {
+    /// <summary>
+    /// Perform Http requests
+    /// </summary>
     internal class RequestService : IRequestService
     {
         private readonly IOpenWeatherSettings _settings;
