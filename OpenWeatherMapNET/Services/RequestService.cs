@@ -18,10 +18,9 @@ namespace OpenWeatherMapNET.Services
         public async Task<HttpResponseMessage> GetAsync(string url, RequestBase request)
         {
             using HttpClient client = new HttpClient();
-            request.AppId = _settings.Token;
             client.Timeout = new TimeSpan(0, 0, _settings.Timeout);
 
-            return await client.GetAsync(url + request.ToQueryString());
+            return await client.GetAsync(url + request.ToQueryString() + $"&appid={_settings.Token}");
         }
     }
 }

@@ -12,5 +12,13 @@ namespace OpenWeatherMapNET.Configuration
         /// <returns></returns>
         public static IServiceCollection AppSettingsConfiguration(this IServiceCollection services)
             => services.AddSingleton<IOpenWeatherSettings, OpenWeatherAppSettings>();
+
+        /// <summary>
+        /// DI for Environment configuration
+        /// </summary>
+        /// <param name="services"></param>
+        /// <returns></returns>
+        public static IServiceCollection EnvironmentVariablesConfiguration(this IServiceCollection services)
+            => services.AddSingleton<IOpenWeatherSettings, OpenWeatherEnvironmentSettings>();
     }
 }

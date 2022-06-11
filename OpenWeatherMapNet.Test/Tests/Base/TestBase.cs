@@ -23,7 +23,7 @@ namespace OpenWeatherMapNet.Test.Tests.Base
 
             var services = new ServiceCollection()
                 .AddSingleton<IConfiguration>(conf)
-                .AppSettingsConfiguration()
+                .EnvironmentVariablesConfiguration()
                 .AddOpenWeatherMapServices();
 
             _provider = services.BuildServiceProvider();

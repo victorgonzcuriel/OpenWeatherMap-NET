@@ -9,11 +9,6 @@ namespace OpenWeatherMapNET.Models
     public abstract class RequestBase
     {
         /// <summary>
-        /// API key
-        /// </summary>
-        internal string AppId { get; set; } = string.Empty;
-
-        /// <summary>
         /// Get a query string with the object information
         /// </summary>
         /// <returns></returns>
