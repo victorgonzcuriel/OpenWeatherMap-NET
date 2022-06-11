@@ -3,15 +3,18 @@ using Microsoft.Extensions.DependencyInjection;
 using OpenWeatherMapNET.Configuration;
 using OpenWeatherMapNET.Settings;
 
-namespace OpenWeatherMapNet.Test.Tests.Settings
+namespace OpenWeatherMapNet.Test.Tests.Base
 {
-    public class AppSettingsTests
+    /// <summary>
+    /// Base class to initialize services on tests
+    /// </summary>
+    public abstract class TestBase
     {
-        private readonly IServiceProvider _provider;
+        protected readonly IServiceProvider _provider;
         protected readonly IOpenWeatherSettings _settings;
 
-        // From now on, all test will run with environment settings, so this test will not inherit from TestBase
-        public AppSettingsTests()
+
+        public TestBase()
         {
             var conf = new ConfigurationBuilder()
                 .SetBasePath(Directory.GetCurrentDirectory())
@@ -20,18 +23,11 @@ namespace OpenWeatherMapNet.Test.Tests.Settings
 
             var services = new ServiceCollection()
                 .AddSingleton<IConfiguration>(conf)
-                .AppSettingsConfiguration()
+                .EnvironmentVariablesConfiguration()
                 .AddOpenWeatherMapServices();
 
             _provider = services.BuildServiceProvider();
             _settings = _provider.GetService<IOpenWeatherSettings>()!;
         }
-
-        [Fact]
-        public void ReadFromSettings()
-        {
-            Assert.True(!string.IsNullOrEmpty(_settings?.Token) && _settings.Timeout > 0);
-        }
-
     }
 }

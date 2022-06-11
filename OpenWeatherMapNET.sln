@@ -5,7 +5,15 @@ VisualStudioVersion = 17.2.32505.173
 MinimumVisualStudioVersion = 10.0.40219.1
 Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "OpenWeatherMapNET", "OpenWeatherMapNET\OpenWeatherMapNET.csproj", "{44296939-633B-4D04-A46A-FC1678697E8A}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "OpenWeatherMapNet.Test", "OpenWeatherMapNet.Test\OpenWeatherMapNet.Test.csproj", "{C6C93432-165D-4DAE-BD91-B2E6FDC9BABD}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "OpenWeatherMapNet.Test", "OpenWeatherMapNet.Test\OpenWeatherMapNet.Test.csproj", "{C6C93432-165D-4DAE-BD91-B2E6FDC9BABD}"
+EndProject
+Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Elementos de la solución", "Elementos de la solución", "{9E20B804-6B46-47A9-ACE5-E3F2ADB947C9}"
+	ProjectSection(SolutionItems) = preProject
+		.gitignore = .gitignore
+		.github\workflows\dotnet.yml = .github\workflows\dotnet.yml
+		LICENSE = LICENSE
+		README.md = README.md
+	EndProjectSection
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution

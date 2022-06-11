@@ -5,7 +5,7 @@ namespace OpenWeatherMapNET.Settings
     /// <summary>
     /// Settings implementation from Appsettings.json
     /// </summary>
-    public class OpenWeatherAppSettings : IOpenWeatherSettings
+    internal class OpenWeatherAppSettings : IOpenWeatherSettings
     {
         private readonly IConfiguration _configuration;
 
