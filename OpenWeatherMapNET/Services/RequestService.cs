@@ -1,5 +1,4 @@
 ﻿using OpenWeatherMapNET.Models;
-using OpenWeatherMapNET.Models.Base;
 using OpenWeatherMapNET.Settings;
 
 namespace OpenWeatherMapNET.Services
@@ -16,15 +15,13 @@ namespace OpenWeatherMapNET.Services
             _settings = settings;
         }
 
-        public async Task<ResponseBase<T>> Get<T>(string url, RequestBase request) where T : IResponse
+        public async Task<HttpResponseMessage> GetAsync(string url, RequestBase request)
         {
             using HttpClient client = new HttpClient();
-
+            request.AppId = _settings.Token;
             client.Timeout = new TimeSpan(0, 0, _settings.Timeout);
 
-            var response = await client.GetAsync(url + request.ToQueryString());
-
-            return new ResponseBase<T>(response);
+            return await client.GetAsync(url + request.ToQueryString());
         }
     }
 }

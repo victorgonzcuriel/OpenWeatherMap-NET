@@ -11,7 +11,7 @@ namespace OpenWeatherMapNET.Models
         /// <summary>
         /// API key
         /// </summary>
-        public string AppId { get; set; } = string.Empty;
+        internal string AppId { get; set; } = string.Empty;
 
         /// <summary>
         /// Get a query string with the object information
@@ -24,6 +24,8 @@ namespace OpenWeatherMapNET.Models
             var props = this.GetType()
                 .GetProperties()
                 .Where(x => x.GetValue(this) != null && !string.IsNullOrEmpty(x.GetValue(this)!.ToString()));
+
+            var queryStringValues = new List<string>();
 
             foreach (var prop in props)
             {
@@ -43,10 +45,10 @@ namespace OpenWeatherMapNET.Models
                     }
                 }
 
-                propsString = String.Join("&", $"{propName}={HttpUtility.UrlEncode(prop.GetValue(this)!.ToString())}");
+                queryStringValues.Add($"{propName}={HttpUtility.UrlEncode(prop.GetValue(this)!.ToString())}");
             }
 
-            return $"?{propsString}";
+            return $"?{string.Join("&", queryStringValues)}";
         }
     }
 }

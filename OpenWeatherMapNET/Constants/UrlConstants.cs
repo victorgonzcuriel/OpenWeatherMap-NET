@@ -14,6 +14,6 @@ namespace OpenWeatherMapNET.Constants
         /// <summary>
         /// Geo API Url
         /// </summary>
-        public const string GEO_API = "https://api.openweathermap.org/geo/1.0/direct?";
+        public const string DIRECT_GEOAPI = "http://api.openweathermap.org/geo/1.0/direct";
     }
 }

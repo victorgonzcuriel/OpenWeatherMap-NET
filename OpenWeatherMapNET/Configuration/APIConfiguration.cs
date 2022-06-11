@@ -13,6 +13,7 @@ namespace OpenWeatherMapNET.Configuration
         public static IServiceCollection AddOpenWeatherMapServices(this IServiceCollection services)
         {
             services.AddScoped<IRequestService, RequestService>();
+            services.AddScoped<IGeoCodingService, GeoCodingService>();
 
             return services;
         }
