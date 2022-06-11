@@ -23,6 +23,6 @@ jobs:
       run: dotnet build --no-restore
     - name: Test
       env: 
-        OpenWeather_Token: ${{TOKEN}}
+        OpenWeather_Token: ${{secrets.TOKEN}}
         OpenWeather_Timeout: 30
       run: dotnet test --no-build --verbosity normal
