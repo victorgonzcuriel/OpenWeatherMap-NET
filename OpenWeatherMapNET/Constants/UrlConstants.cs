@@ -1,10 +1,4 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
-
-namespace OpenWeatherMapNET.Constants
+﻿namespace OpenWeatherMapNET.Constants
 {
     /// <summary>
     /// Api Urls
@@ -12,8 +6,18 @@ namespace OpenWeatherMapNET.Constants
     public class UrlConstants
     {
         /// <summary>
-        /// Geo API Url
+        /// Direct Geo API Url
         /// </summary>
         public const string DIRECT_GEOAPI = "http://api.openweathermap.org/geo/1.0/direct";
+
+        /// <summary>
+        /// Zip Geo API Url
+        /// </summary>
+        public const string ZIP_GEOAPI = "http://api.openweathermap.org/geo/1.0/zip";
+
+        /// <summary>
+        /// Reverse Geo API Url
+        /// </summary>
+        public const string REVERSE_GEOAPI = "http://api.openweathermap.org/geo/1.0/reverse";
     }
 }

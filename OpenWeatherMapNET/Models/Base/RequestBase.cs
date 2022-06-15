@@ -1,4 +1,5 @@
 ﻿using OpenWeatherMapNET.Attributes;
+using System.Globalization;
 using System.Web;
 
 namespace OpenWeatherMapNET.Models
@@ -12,7 +13,7 @@ namespace OpenWeatherMapNET.Models
         /// Get a query string with the object information
         /// </summary>
         /// <returns></returns>
-        public string ToQueryString()
+        public virtual string ToQueryString()
         {
             var propsString = string.Empty;
 
@@ -40,7 +41,14 @@ namespace OpenWeatherMapNET.Models
                     }
                 }
 
-                queryStringValues.Add($"{propName}={HttpUtility.UrlEncode(prop.GetValue(this)!.ToString())}");
+                var value = string.Empty;
+
+                if (prop.PropertyType == typeof(decimal))
+                    value = ((decimal)prop.GetValue(this)!).ToString(CultureInfo.InvariantCulture);
+                else
+                    value = prop.GetValue(this)!.ToString();
+
+                queryStringValues.Add($"{propName}={HttpUtility.UrlEncode(value)}");
             }
 
             return $"?{string.Join("&", queryStringValues)}";
