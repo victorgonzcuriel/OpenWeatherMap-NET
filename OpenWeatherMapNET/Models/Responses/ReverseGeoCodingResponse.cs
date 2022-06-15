@@ -2,7 +2,7 @@
 
 namespace OpenWeatherMapNET.Models
 {
-    public class DirectGeoCodingResponse : IResponse
+    public class ReverseGeoCodingResponse : IResponse
     {
         public string Name { get; set; } = string.Empty;
         public Dictionary<string, string> LocalNames { get; set; } = new Dictionary<string, string>();
@@ -11,6 +11,5 @@ namespace OpenWeatherMapNET.Models
         [JsonPropertyName("lon")]
         public decimal Longitude { get; set; }
         public string Country { get; set; } = string.Empty;
-        public string State { get; set; } = string.Empty;
     }
 }

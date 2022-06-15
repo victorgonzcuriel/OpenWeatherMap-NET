@@ -1,4 +1,5 @@
-﻿using System.Text.Json;
+﻿using OpenWeatherMapNET.Constants;
+using System.Text.Json;
 
 namespace OpenWeatherMapNET.Models
 {
@@ -13,7 +14,7 @@ namespace OpenWeatherMapNET.Models
         public SingleResponseBase(HttpResponseMessage response) : base(response)
         {
             if (response.IsSuccessStatusCode)
-                Response = JsonSerializer.Deserialize<T>(response.Content.ReadAsStringAsync().GetAwaiter().GetResult())!;
+                Response = JsonSerializer.Deserialize<T>(response.Content.ReadAsStringAsync().GetAwaiter().GetResult(), OpenWeatherSerializerOptions.SerializerOptions)!;
         }
     }
 }
