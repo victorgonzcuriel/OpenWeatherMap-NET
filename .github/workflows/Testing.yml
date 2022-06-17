@@ -5,7 +5,7 @@ on:
     branches: [ "main", "prerelease" ]
 
 jobs:
-  build:
+  test:
 
     runs-on: ubuntu-latest
 
