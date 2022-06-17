@@ -5,29 +5,34 @@ namespace OpenWeatherMapNET.Services
 {
     public class GeoCodingService : IGeoCodingService
     {
-        private readonly IRequestService _service;
+        private readonly IRequestService _requestService;
+        private readonly IResponseCreationService _responseCreationService;
 
-        public GeoCodingService(IRequestService service) => _service = service;
+        public GeoCodingService(IRequestService service, IResponseCreationService responseCreationService)
+        {
+            _requestService = service;
+            _responseCreationService = responseCreationService;
+        }
 
         public async Task<ListResponseBase<DirectGeoCodingResponse>> DirectGeoCodingAsync(DirectGeoCodingRequest request)
         {
-            var response = await _service.GetAsync(UrlConstants.DIRECT_GEOAPI, request);
+            var response = await _requestService.GetAsync(UrlConstants.DIRECT_GEOAPI, request);
 
-            return new ListResponseBase<DirectGeoCodingResponse>(response);
+            return await _responseCreationService.GetListResponseFromHttpResponseAsync<DirectGeoCodingResponse>(response);
         }
 
         public async Task<ListResponseBase<ReverseGeoCodingResponse>> ReverseGeoCodingAsync(ReverseGeoCodingRequest request)
         {
-            var response = await _service.GetAsync(UrlConstants.REVERSE_GEOAPI, request);
+            var response = await _requestService.GetAsync(UrlConstants.REVERSE_GEOAPI, request);
 
-            return new ListResponseBase<ReverseGeoCodingResponse>(response);
+            return await _responseCreationService.GetListResponseFromHttpResponseAsync<ReverseGeoCodingResponse>(response);
         }
 
         public async Task<SingleResponseBase<ZipCodeGeoCodingResponse>> ZipGeoCodingAsync(ZipCodeGeoCodingRequest request)
         {
-            var response = await _service.GetAsync(UrlConstants.ZIP_GEOAPI, request);
+            var response = await _requestService.GetAsync(UrlConstants.ZIP_GEOAPI, request);
 
-            return new SingleResponseBase<ZipCodeGeoCodingResponse>(response);
+            return await _responseCreationService.GetSingleResponseFromHttpResponseAsync<ZipCodeGeoCodingResponse>(response);
         }
     }
 }

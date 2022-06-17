@@ -10,9 +10,9 @@ EndProject
 Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Elementos de la solución", "Elementos de la solución", "{9E20B804-6B46-47A9-ACE5-E3F2ADB947C9}"
 	ProjectSection(SolutionItems) = preProject
 		.gitignore = .gitignore
-		.github\workflows\dotnet.yml = .github\workflows\dotnet.yml
 		LICENSE = LICENSE
 		README.md = README.md
+		.github\workflows\Testing.yml = .github\workflows\Testing.yml
 	EndProjectSection
 EndProject
 Global
