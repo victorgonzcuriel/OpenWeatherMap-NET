@@ -12,6 +12,7 @@
     <Description>.NET library to access OpenWeatherMap API</Description>
     <PackageProjectUrl>https://github.com/victorgonzcuriel/OpenWeatherMap-NET</PackageProjectUrl>
     <PackageLicenseExpression>MIT</PackageLicenseExpression>
+    <PackageId>VGC$(AssemblyName)</PackageId>
   </PropertyGroup>
 
   <ItemGroup>
