@@ -38,7 +38,7 @@ jobs:
           run: dotnet restore
 
         - name: Build
-        - run: dotnet build --configuration $BUILD_CONFIG --no-restore -p:Version=$BUILD_VERSION
+          run: dotnet build --configuration $BUILD_CONFIG --no-restore -p:Version=$BUILD_VERSION
 
         - name: Publish
           run: nuget push **\*.nupkg -Source 'https://api.nuget.org/v3/index.json' -ApiKey ${{secrets.NUGET_KEY}}
