@@ -47,7 +47,7 @@ jobs:
             dotnet-version: 6.x.x
 
         - name: Setup NuGet
-          uses: NuGet/setup-nuget@1.0.5
+          uses: NuGet/setup-nuget@v1.0.5
 
         - name: Get Version
           run: |
