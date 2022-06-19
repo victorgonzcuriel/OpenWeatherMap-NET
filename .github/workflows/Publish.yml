@@ -7,26 +7,26 @@ on:
 
 jobs:
 
-    test:
-
-        runs-on: ubuntu-latest
-
-        env: 
-            OpenWeather_Token: ${{secrets.TOKEN}}
-            OpenWeather_Timeout: 30
-
-        steps:
-        - uses: actions/checkout@v3
-        - name: Setup .NET
-          uses: actions/setup-dotnet@v2
-          with:
-            dotnet-version: 6.x.x
-        - name: Restore dependencies
-          run: dotnet restore
-        - name: Build
-          run: dotnet build --no-restore
-        - name: Test
-          run: dotnet test --no-build --verbosity normal
+#    test:
+#
+#        runs-on: ubuntu-latest
+#
+#        env: 
+#            OpenWeather_Token: ${{secrets.TOKEN}}
+#            OpenWeather_Timeout: 30
+#
+#        steps:
+#        - uses: actions/checkout@v3
+#        - name: Setup .NET
+#          uses: actions/setup-dotnet@v2
+#          with:
+#            dotnet-version: 6.x.x
+#        - name: Restore dependencies
+#          run: dotnet restore
+#        - name: Build
+#          run: dotnet build --no-restore
+#        - name: Test
+#          run: dotnet test --no-build --verbosity normal
         
     publish:
 
@@ -52,7 +52,7 @@ jobs:
         - name: Get Version
           run: |
             Write-Host $Env:GITHUB_REF
-            $version = $Env:GITHUB_REF.Split('/')[1]
+            $version = $Env:GITHUB_REF.Split('/')[3]
             echo "BUILD_VERSION=$version" | Out-File -FilePath $Env:GITHUB_ENV -Encoding utf-8 -Append
           shell: pwsh
 
