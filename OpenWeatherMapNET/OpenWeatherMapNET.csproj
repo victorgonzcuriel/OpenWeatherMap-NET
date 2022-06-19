@@ -7,7 +7,11 @@
     <FileVersion></FileVersion>
     <AssemblyVersion>0.1</AssemblyVersion>
     <PackageReadmeFile>README.md</PackageReadmeFile>
-    <PackageLicenseFile>F:\Repos\OpenWeatherMap-NET\LICENSE</PackageLicenseFile>
+    <GeneratePackageOnBuild>True</GeneratePackageOnBuild>
+    <Company>victorgonzcuriel</Company>
+    <Description>.NET library to access OpenWeatherMap API</Description>
+    <PackageProjectUrl>https://github.com/victorgonzcuriel/OpenWeatherMap-NET</PackageProjectUrl>
+    <PackageLicenseExpression>MIT</PackageLicenseExpression>
   </PropertyGroup>
 
   <ItemGroup>
