@@ -1,13 +1,15 @@
-name: .NET
+name: Test
 
 on:
-  push:
-    branches: [ "main", "prerelease" ]
   pull_request:
-    branches: [ "main", "prerelease" ]
+    branches: [ "main" ]
+
+  create:
+    branches:
+     - release/**
 
 jobs:
-  build:
+  test:
 
     runs-on: ubuntu-latest
 

@@ -1,6 +1,4 @@
-﻿using System.Text.Json;
-
-namespace OpenWeatherMapNET.Models
+﻿namespace OpenWeatherMapNET.Models
 {
     /// <summary>
     /// Response body for array responses
@@ -12,10 +10,6 @@ namespace OpenWeatherMapNET.Models
 
         public ListResponseBase(HttpResponseMessage response) : base(response)
         {
-            if (response.IsSuccessStatusCode)
-                Response = JsonSerializer.Deserialize<List<T>>(response.Content.ReadAsStringAsync().GetAwaiter().GetResult())!;
         }
-
-
     }
 }
