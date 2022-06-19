@@ -1,8 +1,12 @@
-name: .NET
+name: Test
 
 on:
   pull_request:
     branches: [ "main" ]
+
+  create:
+    branches:
+     - release/**
 
 jobs:
   test:
